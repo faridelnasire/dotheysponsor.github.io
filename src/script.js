@@ -6,7 +6,7 @@ $(function() {
     database_url: 'database.csv',
     items: [],
     search: function(input_string) {
-
+      return self.items;
     },
     initiate: function() {
       $.ajax({

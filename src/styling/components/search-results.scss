@@ -1,0 +1,63 @@
+section#search-results {
+  position: absolute;
+  width: 600px;
+  top: 330px;
+  left: 50%;
+  margin-left: -300px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 20px 0 rgba(0,0,0,.05);
+  opacity: 0;
+  z-index: -1;
+
+  -webkit-transition: .15s all ease 0s;
+  -moz-transition: .15s all ease 0s;
+  -moz-transition: .15s all ease 0s;
+  -ms-transition: .15s all ease 0s;
+  -o-transition: .15s all ease 0s;
+  transition: .15s all linear, .15s all ease 0s;
+
+  ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 20px;
+      overflow: auto;
+      border-bottom: dashed 1px #ccc;
+
+      h1.company {
+        font-size: 1em;
+        width: calc(50% - 20px);
+        float: left;
+        font-weight: 400;
+      }
+
+      h2.role {
+        font-size: 1em;
+        width: calc(50% - 20px);
+        float: left;
+        font-weight: 400;
+      }
+
+      h3.year {
+        width: 40px;
+        float: right;
+        font-size: 1em;
+        font-weight: 200;
+        text-align: right;
+      }
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+body.searching section#search-results {
+  top: 130px;
+  opacity: 1;
+  z-index: 1;
+}

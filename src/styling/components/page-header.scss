@@ -1,0 +1,31 @@
+header#page-header {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 50%;
+  margin-top: -30px;
+
+  text-align: center;
+  padding-right: 175px;
+
+  -webkit-transition: .15s all ease 0s;
+  -moz-transition: .15s all ease 0s;
+  -moz-transition: .15s all ease 0s;
+  -ms-transition: .15s all ease 0s;
+  -o-transition: .15s all ease 0s;
+  transition: .15s filter linear, .15s all ease 0s;
+
+  h1 {
+    display: inline-block;
+    text-align: left;
+    width: 175px;
+
+    font-size: 1.2em;
+    color: #fff;
+  }
+}
+
+body.searching header#page-header {
+  top: 20px;
+  margin-top: 0;
+}

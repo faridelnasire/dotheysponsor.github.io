@@ -78,7 +78,7 @@ gulp.task('build_javascript', function () {
   gulp.src('./src/script.js')
     // .pipe(javascript_beautify())
     .pipe(javascript_minify())
-    .pipe(rename('script-min.js'))
+    .pipe(rename('script.js'))
     .pipe(gulp.dest('./dist/assets/js'))
 });
 

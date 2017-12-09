@@ -1,17 +1,22 @@
 $(function() {
+  /*
+    Database
+  */
   var Database = {
     database_url: 'database.csv',
+    items: [],
     search: function(input_string) {
+
+    },
+    initiate: function() {
       $.ajax({
         url: self.database_url,
         async: false,
         success: function(raw_results) {
-          var results = [];
-
           raw_results.split('\n').forEach(function(raw_result_item){
             result_item = raw_result_item.split(';');
 
-            results.append({
+            self.items.push({
               year: result_item[0],
               company: result_item[1],
               role: result_item[2]
@@ -23,6 +28,8 @@ $(function() {
       });
     }
   };
+
+  Database.initiate();
 
   var search_input = $('header#page-header input[type="text"].search-bar');
 

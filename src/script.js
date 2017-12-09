@@ -5,8 +5,20 @@ $(function() {
       $.ajax({
         url: self.database_url,
         async: false,
-        success: function(result) {
-          return $.parseJSON(result);
+        success: function(raw_results) {
+          var results = [];
+
+          raw_results.split('\n').forEach(function(raw_result_item){
+            result_item = raw_result_item.split(';');
+
+            results.append({
+              year: result_item[0],
+              company: result_item[1],
+              role: result_item[2]
+            })
+          });
+
+          return results;
         }
       });
     }

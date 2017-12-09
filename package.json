@@ -1,0 +1,37 @@
+{
+  "name": "dotheysponsor-web",
+  "version": "1.0.0",
+  "description": "A minimalistic tool to see whether a company has requested H1B-visas in the past.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faridelnasire/dotheysponsor.github.io.git"
+  },
+  "keywords": [
+    "H1B",
+    "Lookup",
+    "Company",
+    "Search",
+    "Visa"
+  ],
+  "author": "Farid El Nasire",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/faridelnasire/dotheysponsor.github.io/issues"
+  },
+  "homepage": "https://github.com/faridelnasire/dotheysponsor.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "run-sequence": "^2.2.0"
+  }
+}

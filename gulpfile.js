@@ -5,11 +5,14 @@ var gulp = require('gulp'),
   sourcemaps = require('gulp-sourcemaps'),
   livereload = require('gulp-livereload'),
   notify = require('gulp-notify'),
+  concat = require('gulp-concat'),
   sass = require('gulp-sass'),
   minify_css = require('gulp-minify-css'),
   html_beautify = require('gulp-html-beautify'),
   html_validator = require('gulp-html-validator'),
-  minify_image = require('gulp-imagemin');
+  minify_image = require('gulp-imagemin'),
+  javascript_beautify = require('gulp-jsbeautifier'),
+  javascript_minify = require('gulp-js-minify');
 
 /*
   Process CSS
@@ -56,14 +59,30 @@ gulp.task('build_html', function () {
   Process images
 */
 gulp.task('build_images', function () {
-  gulp.src('./src/images/*')
+  return gulp.src('./src/images/*')
     .pipe(minify_image())
     .pipe(gulp.dest('./dist/assets/img'))
 });
 
 
+/*
+  Process JavaScript
+*/
+gulp.task('build_javascript', function () {
+  gulp.src('./src/**/**.js')
+    .pipe(sourcemaps.init())
+    .pipe(concat('script.js'))
+    .pipe(sourcemaps.write())
+    .pipe(javascript_beautify())
+    .pipe(gulp.dest('./dist/assets/js'))
+    .pipe(javascript_minify())
+    .pipe(rename('script-min.js'))
+    .pipe(gulp.dest('./dist/assets/js'))
+});
+
+
 gulp.task('build', function () {
-  runs_sequence(['build_css', 'build_html', 'build_images']);
+  runs_sequence(['build_css', 'build_html', 'build_images', 'build_javascript']);
 });
 
 gulp.task('default', function () {

@@ -12,7 +12,8 @@ var gulp = require('gulp'),
   html_validator = require('gulp-html-validator'),
   minify_image = require('gulp-imagemin'),
   javascript_beautify = require('gulp-jsbeautifier'),
-  javascript_minify = require('gulp-js-minify');
+  javascript_minify = require('gulp-js-minify'),
+  file_copy = require('gulp-copy');
 
 /*
   Process CSS
@@ -83,8 +84,20 @@ gulp.task('build_javascript', function () {
 });
 
 
+/*
+  Copy files
+*/
+gulp.task('copy_files', function () {
+  gulp.src(['./src/database.csv'])
+    .pipe(file_copy('./dist/', {
+      prefix: 1
+    }))
+    .pipe(gulp.dest('./dist/'))
+});
+
+
 gulp.task('build', function () {
-  runs_sequence(['build_css', 'build_html', 'build_images', 'build_javascript']);
+  runs_sequence(['build_css', 'build_html', 'build_images', 'build_javascript', 'copy_files']);
 });
 
 gulp.task('default', function () {

@@ -59,7 +59,7 @@ gulp.task('build_html', function () {
   Process images
 */
 gulp.task('build_images', function () {
-  return gulp.src('./src/images/*')
+  return gulp.src('./src/images/**/**')
     .pipe(minify_image())
     .pipe(gulp.dest('./dist/assets/img'))
 });
@@ -69,12 +69,14 @@ gulp.task('build_images', function () {
   Process JavaScript
 */
 gulp.task('build_javascript', function () {
-  gulp.src('./src/**/**.js')
+  gulp.src('./src/libraries/**.js')
     .pipe(sourcemaps.init())
-    .pipe(concat('script.js'))
+    .pipe(concat('libraries.js'))
     .pipe(sourcemaps.write())
-    .pipe(javascript_beautify())
     .pipe(gulp.dest('./dist/assets/js'))
+
+  gulp.src('./src/script.js')
+    // .pipe(javascript_beautify())
     .pipe(javascript_minify())
     .pipe(rename('script-min.js'))
     .pipe(gulp.dest('./dist/assets/js'))

@@ -1,3 +1,8 @@
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
+
 $(function() {
   /*
     Database
@@ -10,8 +15,8 @@ $(function() {
 
       for (var i = 0; i < Database.items.length; i++) {
         if(
-          Database.items[i].company.toLowerCase().indexOf(query.toLowerCase()) > -1 ||
-          Database.items[i].role.toLowerCase().indexOf(query.toLowerCase()) > -1
+          Database.items[i].company.indexOf(query) > -1 ||
+          Database.items[i].role.indexOf(query) > -1
         ) {
           SearchResults.items.push(Database.items[i]);
         }
@@ -30,8 +35,8 @@ $(function() {
             if(result_item.length == 3) {
               Database.items.push({
                 year: result_item[0],
-                company: result_item[1],
-                role: result_item[2]
+                company: result_item[1].toLowerCase(),
+                role: result_item[2].toLowerCase()
               });
             }
           });
@@ -46,12 +51,13 @@ $(function() {
   */
   var SearchBar = {
     element: $('input[type="text"].search-bar'),
+    query: '',
     handleInput: function() {
-      var query = $(this).val();
+      SearchBar.query = $(this).val();
 
-      if(query.length) {
+      if(SearchBar.query.length) {
         $('body').addClass('searching');
-        Database.search(query);
+        Database.search(SearchBar.query);
       } else {
         $('body').removeClass('searching');
       }
@@ -76,14 +82,22 @@ $(function() {
       SearchResults.element.html('');
 
       SearchResults.items.forEach(function(item) {
-        var new_item = $(SearchResults.template).clone().appendTo(SearchResults.element);
+        var new_item = $(SearchResults.template).clone().appendTo(SearchResults.element).removeClass('template');
 
-        new_item.find('.company').text(item.company);
-        new_item.find('.role').text(item.role);
+        // Highlight query in result
+        // start_char = item.company.indexOf(SearchBar.query);
+        // end_char = start_char + SearchBar.query.length;
+        item.company_verbose = item.company.replaceAll(
+          SearchBar.query, '<span class="highlighted">' + SearchBar.query + '</span>'
+        );
+        item.role_verbose = item.role.replaceAll(
+          SearchBar.query, '<span class="highlighted">' + SearchBar.query + '</span>'
+        );
+
+        new_item.find('.company').html(item.company_verbose);
+        new_item.find('.role').html(item.role_verbose);
         new_item.find('.year').text(item.year);
       });
-
-      console.log(SearchResults.items)
     }
   };
 

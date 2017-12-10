@@ -29,7 +29,7 @@ gulp.task('build_css', function () {
     .pipe(sourcemaps.init())
     .pipe(sassCompilation)
     .pipe(sourcemaps.write())
-    .pipe(rename('css.css'))
+    .pipe(rename('style.css'))
     .pipe(minify_css())
     .pipe(gulp.dest('./dist/assets/css'));
 });

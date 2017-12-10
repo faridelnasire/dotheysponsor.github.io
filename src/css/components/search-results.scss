@@ -38,6 +38,11 @@ section#search-results {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        text-transform: capitalize;
+
+        .highlighted {
+          font-weight: bold !important;
+        }
       }
 
       h2.role {
@@ -48,6 +53,11 @@ section#search-results {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        text-transform: capitalize;
+
+        .highlighted {
+          font-weight: bold !important;
+        }
       }
 
       h3.year {

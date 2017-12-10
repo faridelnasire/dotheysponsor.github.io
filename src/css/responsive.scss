@@ -27,6 +27,23 @@
     box-shadow: none;
     border-radius: 0px;
     max-height: calc(100% - 117px);
+
+    h1.company {
+      width: calc(100% - 40px) !important;
+    }
+
+    h2.role {
+      width: calc(100% - 40px) !important;
+    }
+
+    h3.year {
+      position: absolute;
+      width: 40px;
+      font-weight: 200;
+      text-align: right;
+      right: 20px;
+      line-height: 60px !important;
+    }
   }
 }
 //

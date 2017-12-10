@@ -39,6 +39,7 @@ section#search-results {
         white-space: nowrap;
         overflow: hidden;
         text-transform: capitalize;
+        line-height: 30px;
 
         .highlighted {
           font-weight: bold !important;
@@ -54,6 +55,7 @@ section#search-results {
         white-space: nowrap;
         overflow: hidden;
         text-transform: capitalize;
+        line-height: 30px;
 
         .highlighted {
           font-weight: bold !important;
@@ -69,6 +71,7 @@ section#search-results {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        line-height: 30px;
       }
     }
 

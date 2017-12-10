@@ -53,7 +53,7 @@ $(function() {
     element: $('input[type="text"].search-bar'),
     query: '',
     handleInput: function() {
-      SearchBar.query = $(this).val();
+      SearchBar.query = $(this).val().toLowerCase();
 
       if(SearchBar.query.length) {
         $('body').addClass('searching');

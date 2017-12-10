@@ -22,14 +22,14 @@ gulp.task('build_css', function () {
   var sassCompilation = sass();
   sassCompilation.on('error', console.error.bind(console));
 
-  return gulp.src('./src/styling/main.scss')
+  return gulp.src('./src/css/main.scss')
     .pipe(plumber({
       errorHandler: notify.onError('\ud83d\udc4e SASS processing failed.')
     }))
     .pipe(sourcemaps.init())
     .pipe(sassCompilation)
     .pipe(sourcemaps.write())
-    .pipe(rename('styling.css'))
+    .pipe(rename('css.css'))
     .pipe(minify_css())
     .pipe(gulp.dest('./dist/assets/css'));
 });
@@ -60,7 +60,7 @@ gulp.task('build_html', function () {
   Process images
 */
 gulp.task('build_images', function () {
-  return gulp.src('./src/images/**/**')
+  return gulp.src('./src/img/**/**')
     .pipe(minify_image())
     .pipe(gulp.dest('./dist/assets/img'))
 });
@@ -70,9 +70,9 @@ gulp.task('build_images', function () {
   Process JavaScript
 */
 gulp.task('build_javascript', function () {
-  gulp.src('./src/libraries/**.js')
+  gulp.src('./src/lib/**.js')
     .pipe(sourcemaps.init())
-    .pipe(concat('libraries.js'))
+    .pipe(concat('libs.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/assets/js'))
 
@@ -97,7 +97,13 @@ gulp.task('copy_files', function () {
 
 
 gulp.task('build', function () {
-  runs_sequence(['build_css', 'build_html', 'build_images', 'build_javascript', 'copy_files']);
+  runs_sequence([
+    'build_css',
+    'build_html',
+    'build_images',
+    'build_javascript',
+    'copy_files'
+  ]);
 });
 
 gulp.task('default', function () {

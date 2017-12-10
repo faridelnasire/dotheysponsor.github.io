@@ -4,6 +4,7 @@
 @import 'components/page-footer';
 @import 'components/search-bar';
 @import 'components/search-results';
+@import 'responsive';
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -20,6 +21,7 @@ div.background {
 
   background-image: url('../img/backgrounds/1.jpg');
   background-size: cover;
+  background-position: center;
   z-index: -1;
   opacity: .25;
 

@@ -1,6 +1,7 @@
+// Handy replaceAll function so we won't have to use heavy regex
 String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.split(search).join(replacement);
+  var target = this;
+  return target.split(search).join(replacement);
 };
 
 $(function() {
@@ -82,16 +83,22 @@ $(function() {
       SearchResults.element.html('');
 
       SearchResults.items.forEach(function(item) {
-        var new_item = $(SearchResults.template).clone().appendTo(SearchResults.element).removeClass('template');
+        var new_item = $(SearchResults.template)
+          .clone()
+          .appendTo(SearchResults.element)
+          .removeClass('template');
 
         // Highlight query in result
-        // start_char = item.company.indexOf(SearchBar.query);
-        // end_char = start_char + SearchBar.query.length;
+        var highlighted_query = '<span class="highlighted">' + SearchBar.query + '</span>';
+
         item.company_verbose = item.company.replaceAll(
-          SearchBar.query, '<span class="highlighted">' + SearchBar.query + '</span>'
+          SearchBar.query,
+          highlighted_query
         );
+
         item.role_verbose = item.role.replaceAll(
-          SearchBar.query, '<span class="highlighted">' + SearchBar.query + '</span>'
+          SearchBar.query,
+          highlighted_query
         );
 
         new_item.find('.company').html(item.company_verbose);

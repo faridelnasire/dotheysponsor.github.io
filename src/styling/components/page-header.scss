@@ -23,9 +23,27 @@ header#page-header {
     font-size: 1.2em;
     color: #fff;
   }
+
+  div {
+    position: relative;
+    display: inline-block;
+
+    div.result-count {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      color: #aaa;
+      line-height: 58px;
+      display: none;
+    }
+  }
 }
 
 body.searching header#page-header {
   top: 20px;
   margin-top: 0;
+
+  div.result-count {
+    display: inline-block;
+  }
 }

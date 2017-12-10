@@ -88,7 +88,7 @@ gulp.task('build_javascript', function () {
   Copy files
 */
 gulp.task('copy_files', function () {
-  gulp.src(['./src/database.csv'])
+  gulp.src(['./src/database.txt'])
     .pipe(file_copy('./dist/', {
       prefix: 1
     }))

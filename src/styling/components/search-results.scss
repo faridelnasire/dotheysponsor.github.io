@@ -1,14 +1,17 @@
 section#search-results {
   position: absolute;
   width: 600px;
+  max-height: calc(100% - 300px);
   top: 500px;
   left: 50%;
   margin-left: -300px;
+  margin-bottom: 100px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 3px 20px 0 rgba(0,0,0,.05);
   opacity: 0;
   z-index: -1;
+  overflow-y: scroll;
 
   -webkit-transition: .15s all ease 0s;
   -moz-transition: .15s all ease 0s;
@@ -32,6 +35,9 @@ section#search-results {
         width: calc(50% - 20px);
         float: left;
         font-weight: 400;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
 
       h2.role {
@@ -39,6 +45,9 @@ section#search-results {
         width: calc(50% - 20px);
         float: left;
         font-weight: 400;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
 
       h3.year {
@@ -47,6 +56,9 @@ section#search-results {
         font-size: 1em;
         font-weight: 200;
         text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
 
